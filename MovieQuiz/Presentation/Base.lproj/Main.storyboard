@@ -120,8 +120,10 @@
                     </view>
                     <connections>
                         <outlet property="counterLabel" destination="gfH-Po-tLA" id="VAW-ca-n6c"/>
-                        <outlet property="imageView" destination="EQq-fh-4Vw" id="pu6-Ei-z4v"/>
-                        <outlet property="textLabel" destination="HGK-22-C84" id="Eok-cg-wmC"/>
+                        <outlet property="noButton" destination="Dgf-HZ-vFj" id="fHv-tl-xhP"/>
+                        <outlet property="posterimageView" destination="EQq-fh-4Vw" id="pu6-Ei-z4v"/>
+                        <outlet property="questionLabel" destination="HGK-22-C84" id="Eok-cg-wmC"/>
+                        <outlet property="yesButton" destination="ho4-cL-bDI" id="MF1-Nq-74d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

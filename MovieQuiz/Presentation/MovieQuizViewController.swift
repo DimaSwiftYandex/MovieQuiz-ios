@@ -2,9 +2,12 @@ import UIKit
 
 final class MovieQuizViewController: UIViewController {
     
-    @IBOutlet weak private var imageView: UIImageView!
-    @IBOutlet weak private var textLabel: UILabel!
+    @IBOutlet weak private var posterimageView: UIImageView!
+    @IBOutlet weak private var questionLabel: UILabel!
     @IBOutlet weak private var counterLabel: UILabel!
+    
+    @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var yesButton: UIButton!
     
     private var currentQuestionIndex = 0
     private var correctAnswers = 0
@@ -59,34 +62,46 @@ final class MovieQuizViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.layer.cornerRadius = 20
+        posterimageView.layer.cornerRadius = 20
         let currentScreen = convert(model: currentQuestion)
         show(quiz: currentScreen)
         
     }
     
     @IBAction private func yesButtonTapped(_ sender: UIButton) {
-        currentQuestion.correctAnswer 
+        disableButtons()
+        currentQuestion.correctAnswer
         ? showAnswerResult(isCorrect: true)
         : showAnswerResult(isCorrect: false)
     }
     
     @IBAction private func noButtonTapped(_ sender: UIButton) {
+        disableButtons()
         currentQuestion.correctAnswer
         ? showAnswerResult(isCorrect: false)
         : showAnswerResult(isCorrect: true)
     }
     
+    private func disableButtons() {
+        yesButton.isEnabled = false
+        noButton.isEnabled = false
+    }
+    
+    private func enableButtons() {
+        yesButton.isEnabled = true
+        noButton.isEnabled = true
+    }
+    
     private func showAnswerResult(isCorrect: Bool) {
-        imageView.layer.masksToBounds = true
-        imageView.layer.borderWidth = 8
-        imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
+        posterimageView.layer.masksToBounds = true
+        posterimageView.layer.borderWidth = 8
+        posterimageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
         
         if isCorrect {
-            imageView.layer.borderColor = UIColor.ypGreen.cgColor
+            posterimageView.layer.borderColor = UIColor.ypGreen.cgColor
             correctAnswers += 1
         } else {
-            imageView.layer.borderColor = UIColor.ypRed.cgColor
+            posterimageView.layer.borderColor = UIColor.ypRed.cgColor
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -103,11 +118,13 @@ final class MovieQuizViewController: UIViewController {
     }
     
     private func show(quiz step: QuizStepViewModel) {
-        imageView.image = step.image
-        textLabel.text = step.question
+        posterimageView.image = step.image
+        questionLabel.text = step.question
         counterLabel.text = step.questionNumber
         
-        imageView.layer.borderColor = UIColor.clear.cgColor
+        posterimageView.layer.borderColor = UIColor.clear.cgColor
+        
+        enableButtons()
     }
     
     private func showNextQuestionOrResults() {
