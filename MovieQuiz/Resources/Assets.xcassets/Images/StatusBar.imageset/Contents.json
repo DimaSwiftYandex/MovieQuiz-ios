@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Background.png",
+      "filename" : "StatusBar.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Background@2x.png",
+      "filename" : "StatusBar@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Background@3x.png",
+      "filename" : "StatusBar@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
