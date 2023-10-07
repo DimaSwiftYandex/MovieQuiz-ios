@@ -69,27 +69,22 @@ final class MovieQuizViewController: UIViewController {
     }
     
     @IBAction private func yesButtonTapped(_ sender: UIButton) {
-        disableButtons()
+        setButtonsEnabled(false)
         currentQuestion.correctAnswer
         ? showAnswerResult(isCorrect: true)
         : showAnswerResult(isCorrect: false)
     }
     
     @IBAction private func noButtonTapped(_ sender: UIButton) {
-        disableButtons()
+        setButtonsEnabled(false)
         currentQuestion.correctAnswer
         ? showAnswerResult(isCorrect: false)
         : showAnswerResult(isCorrect: true)
     }
     
-    private func disableButtons() {
-        yesButton.isEnabled = false
-        noButton.isEnabled = false
-    }
-    
-    private func enableButtons() {
-        yesButton.isEnabled = true
-        noButton.isEnabled = true
+    private func setButtonsEnabled(_ isEnabled: Bool) {
+        yesButton.isEnabled = isEnabled
+        noButton.isEnabled = isEnabled
     }
     
     private func showAnswerResult(isCorrect: Bool) {
@@ -124,7 +119,7 @@ final class MovieQuizViewController: UIViewController {
         
         posterimageView.layer.borderColor = UIColor.clear.cgColor
         
-        enableButtons()
+        setButtonsEnabled(true)
     }
     
     private func showNextQuestionOrResults() {
