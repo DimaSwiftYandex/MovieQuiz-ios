@@ -132,38 +132,38 @@ final class MovieQuizViewController: UIViewController {
         setButtonsEnabled(true)
     }
     
-    private func showNextQuestionOrResults() {
-        if currentQuestionIndex == questionsAmount - 1 {
-            let text = "Ваш результат: \(correctAnswers)/10"
-            let quizResult = QuizResultsViewModel(
-                title: "Поздравляем, вы ответили на 10 из 10!",
-                text: text,
-                buttonText: "Сыграть ещё раз"
-            )
-            show(quiz: quizResult)
-        } else {
-            currentQuestionIndex += 1
-            questionFactory?.requestNextQuestion()
-        }
-    }
+//    private func showNextQuestionOrResults() {
+//        if currentQuestionIndex == questionsAmount - 1 {
+//            let text = "Ваш результат: \(correctAnswers)/10"
+//            let quizResult = QuizResultsViewModel(
+//                title: "Поздравляем, вы ответили на 10 из 10!",
+//                text: text,
+//                buttonText: "Сыграть ещё раз"
+//            )
+//            show(quiz: quizResult)
+//        } else {
+//            currentQuestionIndex += 1
+//            questionFactory?.requestNextQuestion()
+//        }
+//    }
     
-    private func show(quiz result: QuizResultsViewModel) {
-        let bestGameRecord = statisticService.bestGame
-        let formattedDate = bestGameRecord.date.dateTimeString
-        let message = """
-            Ваш результат: \(result.text)\n
-            Лучший результат: \(bestGameRecord.correct)/\(bestGameRecord.total) (\(formattedDate))
-            Точность: \(String(format: "%.2f", statisticService.totalAccuracy * 100))%
-            """
-        let alertModel = AlertModel(
-            title: result.title,
-            message: message,
-            buttonText: result.buttonText
-        ) { [weak self] in
-            self?.restartQuiz()
-        }
-        alertPresenter.presentAlert(alertModel: alertModel)
-    }
+//    private func show(quiz result: QuizResultsViewModel) {
+//        let bestGameRecord = statisticService.bestGame
+//        let formattedDate = bestGameRecord.date.dateTimeString
+//        let message = """
+//            Ваш результат: \(result.text)\n
+//            Лучший результат: \(bestGameRecord.correct)/\(bestGameRecord.total) (\(formattedDate))
+//            Точность: \(String(format: "%.2f", statisticService.totalAccuracy * 100))%
+//            """
+//        let alertModel = AlertModel(
+//            title: result.title,
+//            message: message,
+//            buttonText: result.buttonText
+//        ) { [weak self] in
+//            self?.restartQuiz()
+//        }
+//        alertPresenter.presentAlert(alertModel: alertModel)
+//    }
 
     private func restartQuiz() {
         currentQuestionIndex = 0
