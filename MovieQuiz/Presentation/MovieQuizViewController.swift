@@ -14,22 +14,16 @@ final class MovieQuizViewController: UIViewController {
     // MARK: - Private Properties
     private var currentQuestionIndex = 0
     private var correctAnswers = 0
-    
     private var statisticService: StatisticService = StatisticServiceImplementation()
-    
-//    private var questionFactory: QuestionFactoryProtocol? = QuestionFactory()
     private var questionFactory: QuestionFactoryProtocol?
     private var currentQuestion: QuizQuestion?
     private lazy var alertPresenter = AlertPresenter(viewController: self)
     private let questionsAmount: Int = 10
     
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         posterimageView.layer.cornerRadius = 20
-//        questionFactory?.delegate = self
-//        questionFactory?.requestNextQuestion()
         questionFactory = QuestionFactory(moviesLoader: MoviesLoader(), delegate: self)
         statisticService = StatisticServiceImplementation()
         showLoadingIndicator()
@@ -163,7 +157,6 @@ final class MovieQuizViewController: UIViewController {
                 self.questionFactory?.requestNextQuestion()
             }
         
-//        alertPresenter.show(in: self, alertModel: alertModel)
         alertPresenter.presentAlert(alertModel: alertModel)
 
     }

@@ -80,18 +80,6 @@ final class QuestionFactory: QuestionFactoryProtocol {
     }
     
     func requestNextQuestion() {
-//        if let currentIndex = currentQuestionIndex {
-//            currentQuestionIndex = (currentIndex + 1) % questions.count
-//        } else {
-//            currentQuestionIndex = (0..<questions.count).randomElement()
-//        }
-//        
-//        if let currentQuestionIndex = currentQuestionIndex {
-//            let question = questions[currentQuestionIndex]
-//            delegate?.didReceiveNextQuestion(question: question)
-//        } else {
-//            delegate?.didReceiveNextQuestion(question: nil)
-//        }
         
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
