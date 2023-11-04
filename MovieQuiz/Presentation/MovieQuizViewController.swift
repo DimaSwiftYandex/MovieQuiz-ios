@@ -154,7 +154,7 @@ final class MovieQuizViewController: UIViewController {
                 self.currentQuestionIndex = 0
                 self.correctAnswers = 0
                 
-                self.questionFactory?.requestNextQuestion()
+                self.questionFactory?.loadData()
             }
         
         alertPresenter.presentAlert(alertModel: alertModel)
