@@ -28,6 +28,7 @@ final class MovieQuizViewController: UIViewController {
         statisticService = StatisticServiceImplementation()
         showLoadingIndicator()
         questionFactory?.loadData()
+        setupActivityIndicator()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -61,6 +62,16 @@ final class MovieQuizViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    private func setupActivityIndicator() {
+        activityIndicator.color = UIColor.black
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: posterimageView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: posterimageView.centerYAnchor)
+        ])
+    }
+    
     private func setButtonsEnabled(_ isEnabled: Bool) {
         yesButton.isEnabled = isEnabled
         noButton.isEnabled = isEnabled
@@ -122,6 +133,7 @@ final class MovieQuizViewController: UIViewController {
     }
     
     private func show(quiz step: QuizStepViewModel) {
+        hideLoadingIndicator()
         posterimageView.image = step.image
         questionLabel.text = step.question
         counterLabel.text = step.questionNumber
@@ -154,7 +166,7 @@ final class MovieQuizViewController: UIViewController {
                 self.currentQuestionIndex = 0
                 self.correctAnswers = 0
                 
-                self.questionFactory?.requestNextQuestion()
+                self.questionFactory?.loadData()
             }
         
         alertPresenter.presentAlert(alertModel: alertModel)
@@ -176,6 +188,7 @@ extension MovieQuizViewController: QuestionFactoryDelegate {
     }
     
     func didFailToLoadData(with error: Error) {
+        hideLoadingIndicator()
         showNetworkError(message: error.localizedDescription)
     }
     
@@ -191,4 +204,8 @@ extension MovieQuizViewController: QuestionFactoryDelegate {
             self?.show(quiz: viewModel)
         }
     }
+    
+    func willLoadNextQuestion() {
+            showLoadingIndicator()
+        }
 }
