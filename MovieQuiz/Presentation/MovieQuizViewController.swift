@@ -28,6 +28,7 @@ final class MovieQuizViewController: UIViewController {
         statisticService = StatisticServiceImplementation()
         showLoadingIndicator()
         questionFactory?.loadData()
+        activityIndicator.color = UIColor.black
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -191,4 +192,8 @@ extension MovieQuizViewController: QuestionFactoryDelegate {
             self?.show(quiz: viewModel)
         }
     }
+    
+    func willLoadNextQuestion() {
+            showLoadingIndicator()
+        }
 }
