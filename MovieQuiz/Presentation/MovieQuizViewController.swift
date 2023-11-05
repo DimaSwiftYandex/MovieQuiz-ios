@@ -28,7 +28,7 @@ final class MovieQuizViewController: UIViewController {
         statisticService = StatisticServiceImplementation()
         showLoadingIndicator()
         questionFactory?.loadData()
-        activityIndicator.color = UIColor.black
+        setupActivityIndicator()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -62,6 +62,16 @@ final class MovieQuizViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    private func setupActivityIndicator() {
+        activityIndicator.color = UIColor.black
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: posterimageView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: posterimageView.centerYAnchor)
+        ])
+    }
+    
     private func setButtonsEnabled(_ isEnabled: Bool) {
         yesButton.isEnabled = isEnabled
         noButton.isEnabled = isEnabled
@@ -123,6 +133,7 @@ final class MovieQuizViewController: UIViewController {
     }
     
     private func show(quiz step: QuizStepViewModel) {
+        hideLoadingIndicator()
         posterimageView.image = step.image
         questionLabel.text = step.question
         counterLabel.text = step.questionNumber
@@ -177,6 +188,7 @@ extension MovieQuizViewController: QuestionFactoryDelegate {
     }
     
     func didFailToLoadData(with error: Error) {
+        hideLoadingIndicator()
         showNetworkError(message: error.localizedDescription)
     }
     

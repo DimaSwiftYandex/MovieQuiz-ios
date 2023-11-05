@@ -106,8 +106,9 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hEM-Cb-vOv">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hEM-Cb-vOv">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -115,9 +116,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qjJ-yh-B1Q" secondAttribute="bottom" id="0Oq-5b-rzO"/>
                             <constraint firstItem="qjJ-yh-B1Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7mg-oF-gEo"/>
-                            <constraint firstItem="hEM-Cb-vOv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DFO-t2-bKu"/>
                             <constraint firstItem="uGc-kt-25h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="HMZ-ld-f86"/>
-                            <constraint firstItem="hEM-Cb-vOv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PJD-Lw-QlM"/>
                             <constraint firstItem="qjJ-yh-B1Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="cUz-hK-gJ8"/>
                             <constraint firstItem="uGc-kt-25h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="iZp-uV-LnN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uGc-kt-25h" secondAttribute="trailing" constant="20" id="rpX-0o-CSZ"/>
