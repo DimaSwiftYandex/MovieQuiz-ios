@@ -13,3 +13,4 @@ protocol QuestionFactoryProtocol {
     func requestNextQuestion()
     func reset()
 }
+

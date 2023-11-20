@@ -119,5 +119,5 @@ final class QuestionFactory: QuestionFactoryProtocol {
     func reset() {
         currentQuestionIndex = nil
     }
-    
 }
+
